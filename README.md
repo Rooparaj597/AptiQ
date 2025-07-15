@@ -1,35 +1,66 @@
-AptiQ – Master Aptitude from A to Z
+# 🧠 AptiQ – Master Aptitude from A to Z
+
 AptiQ is a smart, student-focused web app to help learners master aptitude for placements, competitive exams, and personal growth — from A to Z.
 
-🎯 Learn theory. 🧠 Practice daily. 📊 Track progress.
-Built with ❤️ using React + TailwindCSS.
+---
 
-🔧 Tech Stack
-⚛️ React.js (Frontend)
-🎨 TailwindCSS (Styling)
-🔄 Zustand (State Management) / Context API
-🔥 Firebase (Optional – user auth, data)
-📦 Vite (fast dev setup)
-📂 Folder Structure
-aptiq/ ├── public/ │ └── favicon.ico ├── src/ │ ├── assets/ │ │ └── logo.svg │ ├── components/ │ │ ├── Navbar.jsx │ │ ├── Sidebar.jsx │ │ └── Footer.jsx │ ├── pages/ │ │ ├── Home.jsx │ │ ├── Learn.jsx │ │ ├── Practice.jsx │ │ └── Result.jsx │ ├── data/ │ │ └── questions.json │ ├── App.jsx │ └── main.jsx ├── tailwind.config.js ├── index.html └── package.json
+## 🚀 Tech Stack
 
-yaml Copy Edit
+- ⚛️ React.js (Frontend)
+- 🎨 TailwindCSS (Styling)
+- 🔄 Zustand / Context API (State Management)
+- 🔥 Firebase (Optional – user auth & storage)
+- ⚡ Vite (Fast dev server)
 
-🚀 Features (Planned)
-✅ Topic-wise theory and shortcut tips
-✅ Timed quizzes with difficulty levels
-✅ Visual explanation for every question
-✅ Performance tracker (accuracy, time)
-✅ Daily streak tracking
-✅ Responsive design
-✅ Tamil + English option (coming soon)
-📆 Build Roadmap (Month Plan)
-Week 1 → Setup UI + Quiz engine + 2 topics
-Week 2 → Add more topics + performance tracking
-Week 3 → Dark mode, leaderboard, random quiz
-Week 4 → Polish UI + responsive + deploy
-🌐 Live URL (Coming Soon)
-Hosted on Vercel – check back after Day 7!
+---
 
-✍️ Author
-Built by Rooparaj with love, logic, and late-night debugging.
+## 🗂️ Project Structure
+
+aptiq/
+├── public/
+│ └── favicon.ico
+├── src/
+│ ├── assets/ → Logos, images
+│ ├── components/ → Navbar, Sidebar, Footer
+│ ├── pages/ → Home, Learn, Practice, Result
+│ ├── data/ → questions.json (quiz DB)
+│ ├── App.jsx
+│ └── main.jsx
+├── index.html
+├── tailwind.config.js
+└── package.json
+
+
+---
+
+## ✅ Key Features
+
+- 📘 Topic-wise theory + shortcut tips  
+- 🧪 Timed quizzes with difficulty levels  
+- 👀 Visual explanation for each question  
+- 📊 Performance tracker (accuracy, time)  
+- 🔥 Daily streak tracking  
+- 📱 Fully responsive design  
+- 🌐 Tamil + English (coming soon)
+
+---
+
+## 🗓️ Roadmap
+
+| Week | Goals |
+|------|-------|
+| 1️⃣ | Setup UI, quiz engine, and 2 topics |
+| 2️⃣ | Add more topics + performance tracking |
+| 3️⃣ | Dark mode, leaderboard, random quiz |
+| 4️⃣ | Polish UI, responsive, deploy |
+
+---
+
+## 💡 Inspiration
+
+Helping students prepare **effectively and enjoyably** for aptitude rounds without stress.  
+Built with love, logic, and late-night debugging 💤
+
+---
+
+### ✨ Built by [Rooparaj](https://github.com/Rooparaj597)
