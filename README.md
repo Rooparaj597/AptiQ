@@ -1,12 +1,35 @@
-# React + Vite
+AptiQ – Master Aptitude from A to Z
+AptiQ is a smart, student-focused web app to help learners master aptitude for placements, competitive exams, and personal growth — from A to Z.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🎯 Learn theory. 🧠 Practice daily. 📊 Track progress.
+Built with ❤️ using React + TailwindCSS.
 
-Currently, two official plugins are available:
+🔧 Tech Stack
+⚛️ React.js (Frontend)
+🎨 TailwindCSS (Styling)
+🔄 Zustand (State Management) / Context API
+🔥 Firebase (Optional – user auth, data)
+📦 Vite (fast dev setup)
+📂 Folder Structure
+aptiq/ ├── public/ │ └── favicon.ico ├── src/ │ ├── assets/ │ │ └── logo.svg │ ├── components/ │ │ ├── Navbar.jsx │ │ ├── Sidebar.jsx │ │ └── Footer.jsx │ ├── pages/ │ │ ├── Home.jsx │ │ ├── Learn.jsx │ │ ├── Practice.jsx │ │ └── Result.jsx │ ├── data/ │ │ └── questions.json │ ├── App.jsx │ └── main.jsx ├── tailwind.config.js ├── index.html └── package.json
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+yaml Copy Edit
 
-## Expanding the ESLint configuration
+🚀 Features (Planned)
+✅ Topic-wise theory and shortcut tips
+✅ Timed quizzes with difficulty levels
+✅ Visual explanation for every question
+✅ Performance tracker (accuracy, time)
+✅ Daily streak tracking
+✅ Responsive design
+✅ Tamil + English option (coming soon)
+📆 Build Roadmap (Month Plan)
+Week 1 → Setup UI + Quiz engine + 2 topics
+Week 2 → Add more topics + performance tracking
+Week 3 → Dark mode, leaderboard, random quiz
+Week 4 → Polish UI + responsive + deploy
+🌐 Live URL (Coming Soon)
+Hosted on Vercel – check back after Day 7!
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+✍️ Author
+Built by Rooparaj with love, logic, and late-night debugging.
