@@ -18,6 +18,9 @@ export default function Learn() {
         </li>
         <li className="bg-white shadow p-4 rounded hover:bg-blue-50 cursor-pointer">
           ⏱️ Time, Speed & Distance
+        </li>  
+        <li className="bg-white shadow-md p-4 rounded-md hover:bg-blue-50">
+          🔢 Percentages
         </li>
       </ul>
     </div>

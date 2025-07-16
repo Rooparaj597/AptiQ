@@ -1,20 +1,21 @@
+import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Learn from "./pages/Learn";
 import Practice from "./pages/Practice";
-import Navbar from "./components/Navbar";
+import Percentages from "./pages/Percentages";
 
-export default function App() {
+function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-gray-50">
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/learn" element={<Learn />} />
-          <Route path="/practice" element={<Practice />} />
-        </Routes>
-      </div>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/learn" element={<Learn />} />
+        <Route path="/practice" element={<Practice />} />
+        <Route path="/learn/percentages" element={<Percentages />} />
+      </Routes>
     </Router>
   );
 }
+
+export default App;
