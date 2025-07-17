@@ -21,6 +21,10 @@ export default function Home() {
             🧠 Start Practice
           </button>
         </Link>
+        <Link to="/learn/profit-loss" className="hover:text-blue-500">
+            💰 Profit & Loss
+        </Link>
+
       </div>
 
       <p className="mt-12 text-sm text-gray-500">Made for students. Built by Rooparaj.</p>

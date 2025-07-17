@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import Learn from "./pages/Learn";
 import Practice from "./pages/Practice";
 import Percentages from "./pages/Percentages";
+import ProfitLoss from "./pages/ProfitLoss";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/learn" element={<Learn />} />
         <Route path="/practice" element={<Practice />} />
         <Route path="/learn/percentages" element={<Percentages />} />
+        <Route path="/learn/profit-loss" element={<ProfitLoss />} />
       </Routes>
     </Router>
   );
