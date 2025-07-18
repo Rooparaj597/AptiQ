@@ -5,6 +5,7 @@ import Learn from "./pages/Learn";
 import Practice from "./pages/Practice";
 import Percentages from "./pages/Percentages";
 import ProfitLoss from "./pages/ProfitLoss";
+import TimeWork from './pages/TimeWork';
 
 function App() {
   return (
@@ -15,9 +16,14 @@ function App() {
         <Route path="/practice" element={<Practice />} />
         <Route path="/learn/percentages" element={<Percentages />} />
         <Route path="/learn/profit-loss" element={<ProfitLoss />} />
+        <Route path="/learn/time-work" element={<TimeWork />} />
+        <Route path="/learn/time-work" element={<TimeWork />} />
       </Routes>
     </Router>
   );
 }
 
 export default App;
+
+
+
