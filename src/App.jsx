@@ -35,9 +35,12 @@ function App() {
         <Route path="/practice/easy" element={<Easy />} />
         <Route path="/practice/medium" element={<Medium />} />
         <Route path="/practice/hard" element={<Hard />} />
+        <Route path="/practice/medium" element={<Medium />} />
+        <Route path="/practice/hard" element={<Hard />} />
       </Routes>
     </Router>
   );
 }
 
 export default App;
+
