@@ -2,39 +2,62 @@ import React, { useState } from "react";
 import mediumQuestions from "../data/mediumQuestions";
 
 export default function Medium() {
-  const [index, setIndex] = useState(0);
+  const [current, setCurrent] = useState(0);
   const [score, setScore] = useState(0);
-  const [showScore, setShowScore] = useState(false);
+  const [showAnswer, setShowAnswer] = useState(false);
 
-  const question = mediumQuestions[index];
+  const question = mediumQuestions[current];
 
-  const handleAnswer = (option) => {
+  const handleOptionClick = (option) => {
     if (option === question.answer) setScore(score + 1);
-    const next = index + 1;
-    if (next < mediumQuestions.length) setIndex(next);
-    else setShowScore(true);
+    setCurrent(current + 1);
+    setShowAnswer(false);
+  };
+
+  const handleReset = () => {
+    setCurrent(0);
+    setScore(0);
+    setShowAnswer(false);
   };
 
   return (
-    <div className="p-6 max-w-2xl mx-auto">
-      <h1 className="text-2xl font-bold text-yellow-700 mb-4">🟡 Medium Level</h1>
+    <div className="p-6 max-w-xl mx-auto text-gray-800">
+      <h2 className="text-2xl font-bold text-yellow-600 mb-4">🟡 Medium Practice</h2>
+      <p>Score: {score}</p>
 
-      {showScore ? (
-        <h2 className="text-lg font-semibold">Your Score: {score}/{mediumQuestions.length}</h2>
+      {current < mediumQuestions.length ? (
+        <>
+          <h3 className="text-lg font-semibold mb-2">{question.question}</h3>
+          <ul className="mb-4">
+            {question.options.map((option, i) => (
+              <li key={i}>
+                <button
+                  className="bg-yellow-300 hover:bg-yellow-400 rounded px-4 py-2 mb-2"
+                  onClick={() => handleOptionClick(option)}
+                >
+                  {option}
+                </button>
+              </li>
+            ))}
+          </ul>
+          <button
+            onClick={() => setShowAnswer(!showAnswer)}
+            className="text-sm text-blue-600 underline"
+          >
+            {showAnswer ? "Hide Answer" : "Show Answer"}
+          </button>
+          {showAnswer && <p className="mt-2 text-green-700">Answer: {question.answer}</p>}
+        </>
       ) : (
         <>
-          <h2 className="text-lg font-semibold mb-2">{question.question}</h2>
-          <div className="grid gap-2">
-            {question.options.map((opt) => (
-              <button
-                key={opt}
-                onClick={() => handleAnswer(opt)}
-                className="bg-yellow-500 hover:bg-yellow-600 text-white p-2 rounded"
-              >
-                {opt}
-              </button>
-            ))}
-          </div>
+          <h3 className="text-xl font-bold">✅ Finished!</h3>
+          <p>Your score: {score} / {mediumQuestions.length}</p>
+          <button
+            onClick={handleReset}
+            className="mt-4 bg-gray-700 text-white px-4 py-2 rounded"
+          >
+            Retry
+          </button>
         </>
       )}
     </div>
