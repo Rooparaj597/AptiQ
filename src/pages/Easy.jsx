@@ -1,41 +1,111 @@
-import React, { useState } from "react";
-import easyQuestions from "../data/easyQuestions";
+import React, { useState, useEffect } from "react";
+import questions from "../data/easyQuestions";
 
 export default function Easy() {
-  const [index, setIndex] = useState(0);
+  const [current, setCurrent] = useState(0);
+  const [selected, setSelected] = useState(null);
   const [score, setScore] = useState(0);
+  const [showAnswer, setShowAnswer] = useState(false);
   const [showScore, setShowScore] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(15);
 
-  const question = easyQuestions[index];
+  const q = questions[current];
 
-  const handleAnswer = (option) => {
-    if (option === question.answer) setScore(score + 1);
-    const next = index + 1;
-    if (next < easyQuestions.length) setIndex(next);
-    else setShowScore(true);
+  useEffect(() => {
+    if (showScore || showAnswer) return;
+
+    const timer = setInterval(() => {
+      setTimeLeft((prev) => {
+        if (prev === 1) {
+          clearInterval(timer);
+          setShowAnswer(true);
+        }
+        return prev - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [current, showAnswer, showScore]);
+
+  const handleOptionClick = (option) => {
+    setSelected(option);
+    if (option === q.answer) setScore(score + 1);
+    setShowAnswer(true);
+  };
+
+  const handleNext = () => {
+    setSelected(null);
+    setShowAnswer(false);
+    setTimeLeft(15);
+    if (current < questions.length - 1) {
+      setCurrent(current + 1);
+    } else {
+      setShowScore(true);
+    }
+  };
+
+  const handleReset = () => {
+    setCurrent(0);
+    setSelected(null);
+    setScore(0);
+    setShowAnswer(false);
+    setShowScore(false);
+    setTimeLeft(15);
   };
 
   return (
-    <div className="p-6 max-w-2xl mx-auto">
-      <h1 className="text-2xl font-bold text-blue-700 mb-4">🟢 Easy Level</h1>
+    <div className="max-w-2xl mx-auto p-6">
+      <h1 className="text-2xl font-bold text-green-600 mb-4">🟢 Easy Practice</h1>
 
       {showScore ? (
-        <h2 className="text-lg font-semibold">Your Score: {score}/{easyQuestions.length}</h2>
+        <div className="text-center">
+          <p className="text-xl font-semibold mb-4">🎉 You scored {score} out of {questions.length}!</p>
+          <button onClick={handleReset} className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded shadow">🔁 Reset</button>
+        </div>
       ) : (
-        <>
-          <h2 className="text-lg font-semibold mb-2">{question.question}</h2>
-          <div className="grid gap-2">
-            {question.options.map((opt) => (
+        <div>
+          <p className="text-gray-700 font-medium mb-2">Question {current + 1} of {questions.length}</p>
+          <p className={`text-sm font-semibold mb-4 ${timeLeft <= 5 ? "text-red-600" : "text-blue-600"}`}>
+            ⏱ Time Left: {timeLeft}s
+          </p>
+          <h2 className="text-lg font-semibold mb-4">{q.question}</h2>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
+            {q.options.map((option, idx) => (
               <button
-                key={opt}
-                onClick={() => handleAnswer(opt)}
-                className="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded"
+                key={idx}
+                onClick={() => handleOptionClick(option)}
+                disabled={selected}
+                className={`py-2 px-4 rounded border text-left ${
+                  selected
+                    ? option === q.answer
+                      ? "bg-green-300 border-green-600"
+                      : option === selected
+                      ? "bg-red-300 border-red-600"
+                      : "bg-gray-100"
+                    : "hover:bg-blue-100 border-gray-300"
+                }`}
               >
-                {opt}
+                {option}
               </button>
             ))}
           </div>
-        </>
+
+          {showAnswer && (
+            <div className="mb-4">
+              ✅ Correct Answer: <span className="font-semibold text-green-600">{q.answer}</span>
+            </div>
+          )}
+
+          <div className="flex items-center gap-4">
+            <button onClick={handleNext} className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded shadow" disabled={!selected && !showAnswer}>
+              Next
+            </button>
+            <button onClick={handleReset} className="text-sm text-gray-600 hover:text-gray-800 underline">Reset Quiz</button>
+          </div>
+
+          <div className="mt-4 text-gray-600">Score: <span className="font-semibold">{score}</span></div>
+        </div>
       )}
     </div>
   );
