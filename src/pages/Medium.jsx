@@ -11,15 +11,18 @@ export default function Medium() {
 
   const q = questions[current];
 
-  // ⏱ Timer logic
+  const progress = ((current + 1) / questions.length) * 100;
+
+const timerProgress = (timeLeft / 15) * 100;
+
   useEffect(() => {
     if (showScore || showAnswer) return;
 
     const timer = setInterval(() => {
       setTimeLeft((prev) => {
         if (prev === 1) {
-          setShowAnswer(true); // Time's up, reveal answer
           clearInterval(timer);
+          setShowAnswer(true);
           return 0;
         }
         return prev - 1;
@@ -27,20 +30,18 @@ export default function Medium() {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [current, showAnswer, showScore]);
+  }, [current, showScore, showAnswer]);
 
   const handleOptionClick = (option) => {
     setSelected(option);
-    if (option === q.answer) {
-      setScore(score + 1);
-    }
+    if (option === q.answer) setScore(score + 1);
     setShowAnswer(true);
   };
 
   const handleNext = () => {
     setSelected(null);
     setShowAnswer(false);
-    setTimeLeft(15); // Reset timer
+    setTimeLeft(15);
     if (current < questions.length - 1) {
       setCurrent(current + 1);
     } else {
@@ -54,7 +55,7 @@ export default function Medium() {
     setScore(0);
     setShowAnswer(false);
     setShowScore(false);
-    setTimeLeft(15); // Reset timer
+    setTimeLeft(15);
   };
 
   return (
@@ -75,27 +76,46 @@ export default function Medium() {
         </div>
       ) : (
         <div>
+          {/* Progress Bar */}
+          <div className="w-full bg-gray-200 rounded-full h-2 mb-4">
+          <div
+            className={`h-2 rounded-full transition-all duration-500 ${
+              progress < 34
+                ? "bg-red-500"
+                : progress < 67
+                ? "bg-yellow-400"
+                : "bg-green-500"
+            }`}
+            style={{ width: `${progress}%` }}
+          ></div>
+        </div>
+
+
+          {/* Timer */}
+          <p className="text-sm text-red-600 font-semibold mb-2">
+            ⏱ Time Left: {timeLeft}s
+          </p>
+          {/* Timer Progress Bar */}
+          <div className="w-full bg-red-200 h-2 rounded-full mb-4">
+            <div
+              className="h-2 bg-red-500 rounded-full transition-all duration-100"
+              style={{ width: `${timerProgress}%` }}
+            ></div>
+          </div>
+
+
           <p className="text-gray-700 font-medium mb-2">
             Question {current + 1} of {questions.length}
           </p>
 
-          <h2 className="text-lg font-semibold mb-2">{q.question}</h2>
-
-          {/* ⏱ Timer Display */}
-          <p
-            className={`text-sm font-semibold mb-4 ${
-              timeLeft <= 5 ? "text-red-700" : "text-red-600"
-            }`}
-          >
-            ⏱ Time Left: {timeLeft}s
-          </p>
+          <h2 className="text-lg font-semibold mb-4">{q.question}</h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
             {q.options.map((option, idx) => (
               <button
                 key={idx}
                 onClick={() => handleOptionClick(option)}
-                disabled={selected}
+                disabled={selected || timeLeft === 0}
                 className={`py-2 px-4 rounded border text-left ${
                   selected
                     ? option === q.answer
@@ -122,7 +142,7 @@ export default function Medium() {
             <button
               onClick={handleNext}
               className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded shadow"
-              disabled={!selected && !showAnswer}
+              disabled={!showAnswer}
             >
               Next
             </button>

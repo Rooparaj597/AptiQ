@@ -14,22 +14,23 @@ export default function Hard() {
   useEffect(() => {
     if (showScore || showAnswer) return;
 
-    const timer = setInterval(() => {
-      setTimeLeft((prev) => {
-        if (prev === 1) {
-          clearInterval(timer);
-          setShowAnswer(true);
-        }
-        return prev - 1;
-      });
+    if (timeLeft === 0) {
+      setShowAnswer(true);
+      return;
+    }
+
+    const timer = setTimeout(() => {
+      setTimeLeft(timeLeft - 1);
     }, 1000);
 
-    return () => clearInterval(timer);
-  }, [current, showAnswer, showScore]);
+    return () => clearTimeout(timer);
+  }, [timeLeft, showAnswer, showScore]);
 
   const handleOptionClick = (option) => {
     setSelected(option);
-    if (option === q.answer) setScore(score + 1);
+    if (option === q.answer) {
+      setScore(score + 1);
+    }
     setShowAnswer(true);
   };
 
@@ -59,15 +60,25 @@ export default function Hard() {
 
       {showScore ? (
         <div className="text-center">
-          <p className="text-xl font-semibold mb-4">🎉 You scored {score} out of {questions.length}!</p>
-          <button onClick={handleReset} className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded shadow">🔁 Reset</button>
+          <p className="text-xl font-semibold mb-4">
+            🎯 You scored {score} out of {questions.length}!
+          </p>
+          <button
+            onClick={handleReset}
+            className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded shadow"
+          >
+            🔁 Reset
+          </button>
         </div>
       ) : (
         <div>
-          <p className="text-gray-700 font-medium mb-2">Question {current + 1} of {questions.length}</p>
-          <p className={`text-sm font-semibold mb-4 ${timeLeft <= 5 ? "text-red-600" : "text-blue-600"}`}>
+          <p className="text-gray-700 font-medium mb-1">
+            Question {current + 1} of {questions.length}
+          </p>
+          <p className="text-sm text-red-600 font-semibold mb-4">
             ⏱ Time Left: {timeLeft}s
           </p>
+
           <h2 className="text-lg font-semibold mb-4">{q.question}</h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
@@ -93,18 +104,30 @@ export default function Hard() {
 
           {showAnswer && (
             <div className="mb-4">
-              ✅ Correct Answer: <span className="font-semibold text-green-600">{q.answer}</span>
+              ✅ Correct Answer:{" "}
+              <span className="font-semibold text-green-600">{q.answer}</span>
             </div>
           )}
 
           <div className="flex items-center gap-4">
-            <button onClick={handleNext} className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded shadow" disabled={!selected && !showAnswer}>
+            <button
+              onClick={handleNext}
+              className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded shadow"
+              disabled={!selected && !showAnswer}
+            >
               Next
             </button>
-            <button onClick={handleReset} className="text-sm text-gray-600 hover:text-gray-800 underline">Reset Quiz</button>
+            <button
+              onClick={handleReset}
+              className="text-sm text-gray-600 hover:text-gray-800 underline"
+            >
+              Reset Quiz
+            </button>
           </div>
 
-          <div className="mt-4 text-gray-600">Score: <span className="font-semibold">{score}</span></div>
+          <div className="mt-4 text-gray-600">
+            Score: <span className="font-semibold">{score}</span>
+          </div>
         </div>
       )}
     </div>

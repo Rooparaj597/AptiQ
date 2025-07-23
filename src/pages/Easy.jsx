@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import questions from "../data/easyQuestions";
+import questions from "../data/easyQuestions"; // For Easy.jsx, or change to hardQuestions for Hard.jsx
 
-export default function Easy() {
+export default function Easy() { // Rename to Hard for Hard.jsx
   const [current, setCurrent] = useState(0);
   const [selected, setSelected] = useState(null);
   const [score, setScore] = useState(0);
@@ -11,14 +11,16 @@ export default function Easy() {
 
   const q = questions[current];
 
+  // ⏱ Timer logic
   useEffect(() => {
     if (showScore || showAnswer) return;
 
     const timer = setInterval(() => {
       setTimeLeft((prev) => {
         if (prev === 1) {
-          clearInterval(timer);
           setShowAnswer(true);
+          clearInterval(timer);
+          return 0;
         }
         return prev - 1;
       });
@@ -29,7 +31,9 @@ export default function Easy() {
 
   const handleOptionClick = (option) => {
     setSelected(option);
-    if (option === q.answer) setScore(score + 1);
+    if (option === q.answer) {
+      setScore(score + 1);
+    }
     setShowAnswer(true);
   };
 
@@ -55,20 +59,36 @@ export default function Easy() {
 
   return (
     <div className="max-w-2xl mx-auto p-6">
-      <h1 className="text-2xl font-bold text-green-600 mb-4">🟢 Easy Practice</h1>
+      <h1 className="text-2xl font-bold text-green-600 mb-4">🟢 Easy Practice</h1> {/* Change color/text for Hard */}
 
       {showScore ? (
         <div className="text-center">
-          <p className="text-xl font-semibold mb-4">🎉 You scored {score} out of {questions.length}!</p>
-          <button onClick={handleReset} className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded shadow">🔁 Reset</button>
+          <p className="text-xl font-semibold mb-4">
+            🎉 You scored {score} out of {questions.length}!
+          </p>
+          <button
+            onClick={handleReset}
+            className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded shadow"
+          >
+            🔁 Reset
+          </button>
         </div>
       ) : (
         <div>
-          <p className="text-gray-700 font-medium mb-2">Question {current + 1} of {questions.length}</p>
-          <p className={`text-sm font-semibold mb-4 ${timeLeft <= 5 ? "text-red-600" : "text-blue-600"}`}>
+          <p className="text-gray-700 font-medium mb-2">
+            Question {current + 1} of {questions.length}
+          </p>
+
+          <h2 className="text-lg font-semibold mb-2">{q.question}</h2>
+
+          {/* ⏱ Timer Display */}
+          <p
+            className={`text-sm font-semibold mb-4 ${
+              timeLeft <= 5 ? "text-red-700" : "text-red-600"
+            }`}
+          >
             ⏱ Time Left: {timeLeft}s
           </p>
-          <h2 className="text-lg font-semibold mb-4">{q.question}</h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
             {q.options.map((option, idx) => (
@@ -93,18 +113,30 @@ export default function Easy() {
 
           {showAnswer && (
             <div className="mb-4">
-              ✅ Correct Answer: <span className="font-semibold text-green-600">{q.answer}</span>
+              ✅ Correct Answer: {" "}
+              <span className="font-semibold text-green-600">{q.answer}</span>
             </div>
           )}
 
           <div className="flex items-center gap-4">
-            <button onClick={handleNext} className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded shadow" disabled={!selected && !showAnswer}>
+            <button
+              onClick={handleNext}
+              className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded shadow"
+              disabled={!selected && !showAnswer}
+            >
               Next
             </button>
-            <button onClick={handleReset} className="text-sm text-gray-600 hover:text-gray-800 underline">Reset Quiz</button>
+            <button
+              onClick={handleReset}
+              className="text-sm text-gray-600 hover:text-gray-800 underline"
+            >
+              Reset Quiz
+            </button>
           </div>
 
-          <div className="mt-4 text-gray-600">Score: <span className="font-semibold">{score}</span></div>
+          <div className="mt-4 text-gray-600">
+            Score: <span className="font-semibold">{score}</span>
+          </div>
         </div>
       )}
     </div>
