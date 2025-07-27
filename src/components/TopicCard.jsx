@@ -1,20 +1,20 @@
 import { Link } from "react-router-dom";
 
 export default function TopicCard({ title, path, ready }) {
-  if (!ready) {
-    return (
-      <div className="p-4 m-2 rounded-lg bg-gray-200 shadow text-gray-500 text-center cursor-not-allowed backdrop-blur-sm select-none">
-        <h2 className="text-lg font-semibold">{title}</h2>
-        <p className="text-sm mt-1 italic">🚧 Coming Soon</p>
-      </div>
-    );
-  }
+  const cardClasses = `p-4 m-2 rounded-lg shadow-md transition ${
+    ready ? "bg-white hover:bg-gray-100 cursor-pointer" : "bg-gray-100 text-gray-400 cursor-not-allowed"
+  }`;
 
-  return (
+  return ready ? (
     <Link to={path}>
-      <div className="p-4 m-2 rounded-lg bg-white shadow hover:bg-blue-50 transition cursor-pointer">
-        <h2 className="text-lg font-semibold text-gray-800">{title}</h2>
+      <div className={cardClasses}>
+        <h2 className="text-lg font-semibold">{title}</h2>
       </div>
     </Link>
+  ) : (
+    <div className={cardClasses}>
+      <h2 className="text-lg font-semibold">{title}</h2>
+      <p className="text-sm mt-1 text-yellow-500">🚧 Coming Soon</p>
+    </div>
   );
 }
