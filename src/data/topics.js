@@ -18,21 +18,9 @@ export const topics = [
     ready: true,
   },
   {
-    id: "speed-distance",
+    id: "time-speed-distance",
     title: "⏱️ Time, Speed & Distance",
-    path: "/learn/speed-distance",
-    ready: false,
-  },
-  {
-    id: "ratios",
-    title: "🔣 Ratios & Proportions",
-    path: "/learn/ratios",
-    ready: false,
-  },
-  {
-    id: "number-system",
-    title: "🔢 Number System",
-    path: "/learn/number-system",
-    ready: false,
+    path: "/learn/time-speed-distance",
+    ready: true,
   },
 ];

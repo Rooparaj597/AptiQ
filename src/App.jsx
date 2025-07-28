@@ -6,6 +6,7 @@ import Practice from "./pages/Practice";
 import Percentages from "./pages/learn/Percentages";
 import ProfitLoss from "./pages/learn/ProfitLoss";
 import TimeWork from "./pages/learn/TimeWork";
+import TimeSpeedDistance from "./pages/learn/TimeSpeedDistance";
 import Easy from "./pages/Easy";
 import Medium from "./pages/Medium";
 import Hard from "./pages/Hard";
@@ -27,6 +28,7 @@ function App() {
           <Route path="/learn/percentages" element={<Percentages />} />
           <Route path="/learn/profit-loss" element={<ProfitLoss />} />
           <Route path="/learn/time-work" element={<TimeWork />} />
+          <Route path="/learn/time-speed-distance" element={<TimeSpeedDistance/>} />
 
           {/* Practice Levels */}
           <Route path="/practice/easy" element={<Easy />} />

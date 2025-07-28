@@ -1,54 +1,36 @@
-import React from "react";
+// /pages/learn/profit-loss.jsx
 
 export default function ProfitLoss() {
   return (
-    <div className="max-w-4xl mx-auto p-6 text-gray-800">
-      <h1 className="text-3xl font-bold text-blue-700 mb-4">💰 Profit & Loss</h1>
+    <div className="p-8 max-w-3xl mx-auto">
+      <h1 className="text-2xl font-bold mb-4">📊 Profit & Loss</h1>
 
-      {/* Concept */}
-      <section className="mb-6 bg-white shadow-md rounded-md p-4">
-        <h2 className="text-xl font-semibold mb-2">📘 Concept</h2>
-        <p>
-          <strong>Profit</strong> is the gain made when selling an item for more than its cost. <br />
-          <strong>Loss</strong> is the deficit when selling it for less than its cost.
-        </p>
-      </section>
+      <p className="text-gray-700 mb-4">
+        Profit and Loss is used to determine how much gain or loss is made in a transaction.
+      </p>
 
-      {/* Shortcut */}
-      <section className="mb-6 bg-white shadow-md rounded-md p-4">
-        <h2 className="text-xl font-semibold mb-2">⚡ Shortcut Trick</h2>
-        <p>
-          <strong>Profit%</strong> = (Profit / Cost Price) × 100 <br />
-          <strong>Loss%</strong> = (Loss / Cost Price) × 100
-        </p>
-      </section>
+      <h2 className="text-xl font-semibold mt-6 mb-2">📘 Key Terms:</h2>
+      <ul className="list-disc list-inside text-gray-700">
+        <li><strong>Cost Price (CP):</strong> The price at which an item is bought</li>
+        <li><strong>Selling Price (SP):</strong> The price at which an item is sold</li>
+        <li><strong>Profit:</strong> SP - CP (when SP &gt; CP)</li>
+        <li><strong>Loss:</strong> CP - SP (when CP &gt; SP)</li>
 
-      {/* Sample Question */}
-      <section className="mb-6 bg-white shadow-md rounded-md p-4">
-        <h2 className="text-xl font-semibold mb-2">🧠 Sample Question</h2>
-        <p>Q. A man buys a phone for ₹10,000 and sells it for ₹12,000. What is the profit percentage?</p>
-        <p className="mt-2 text-green-700 font-semibold">
-          ➤ Profit = ₹2000 → Profit% = (2000 / 10000) × 100 = <strong>20%</strong>
-        </p>
-      </section>
+      </ul>
 
-      {/* Code Example */}
-      <section className="mb-6 bg-white shadow-md rounded-md p-4">
-        <h2 className="text-xl font-semibold mb-2">💻 JavaScript Code</h2>
-        <pre className="bg-gray-900 text-white font-mono p-4 rounded-md overflow-x-auto text-sm">
-{`function profitPercent(cp, sp) {
-  return ((sp - cp) / cp) * 100;
-}
+      <h2 className="text-xl font-semibold mt-6 mb-2">📊 Formulas:</h2>
+      <ul className="list-disc list-inside text-gray-700">
+        <li>Profit % = (Profit / CP) × 100</li>
+        <li>Loss % = (Loss / CP) × 100</li>
+        <li>SP = CP × (1 + Profit%)</li>
+        <li>SP = CP × (1 - Loss%)</li>
+      </ul>
 
-console.log(profitPercent(10000, 12000)); // 20`}
-        </pre>
-      </section>
-
-      {/* Visual Placeholder */}
-      <section className="bg-blue-100 text-blue-700 p-4 rounded-md">
-        <h2 className="text-xl font-semibold mb-2">📊 Visual Explanation (Coming Soon)</h2>
-        <p>📈 A graph or animation showing profit/loss will go here.</p>
-      </section>
+      <h2 className="text-xl font-semibold mt-6 mb-2">🧠 Example:</h2>
+      <p className="text-gray-700">
+        If CP = ₹100 and SP = ₹120, then Profit = ₹20<br />
+        Profit % = (20 / 100) × 100 = <strong>20%</strong>
+      </p>
     </div>
   );
 }
