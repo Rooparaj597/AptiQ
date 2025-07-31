@@ -7,10 +7,11 @@ import Percentages from "./pages/learn/Percentages";
 import ProfitLoss from "./pages/learn/ProfitLoss";
 import TimeWork from "./pages/learn/TimeWork";
 import TimeSpeedDistance from "./pages/learn/TimeSpeedDistance";
+import Calendar from "./pages/learn/Calendar"; // ✅ Add this
 import Easy from "./pages/Easy";
 import Medium from "./pages/Medium";
 import Hard from "./pages/Hard";
-import { useStreak, StreakProvider } from "./Context/StreakContext";
+import { StreakProvider } from "./Context/StreakContext";
 import Navbar from "./components/Navbar";
 
 function App() {
@@ -28,7 +29,8 @@ function App() {
           <Route path="/learn/percentages" element={<Percentages />} />
           <Route path="/learn/profit-loss" element={<ProfitLoss />} />
           <Route path="/learn/time-work" element={<TimeWork />} />
-          <Route path="/learn/time-speed-distance" element={<TimeSpeedDistance/>} />
+          <Route path="/learn/time-speed-distance" element={<TimeSpeedDistance />} />
+          <Route path="/learn/calendar" element={<Calendar />} /> {/* ✅ New */}
 
           {/* Practice Levels */}
           <Route path="/practice/easy" element={<Easy />} />
