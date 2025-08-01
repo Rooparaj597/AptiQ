@@ -5,88 +5,99 @@ import { FaCalendarAlt, FaLightbulb, FaCode, FaRedo, FaBolt } from "react-icons/
 const Calendar = () => {
   return (
     <div className="p-6 max-w-4xl mx-auto">
-      <div className="mb-8 text-center">    
-          <Link
-        to="/learn"
-        className="fixed bottom-5 right-5 bg-blue-600 text-white px-4 py-2 rounded-full shadow hover:bg-blue-700 transition"
-      >
-        ⬅ Back to Topics
-      </Link>
-        <h1 className="text-3xl font-bold text-blue-600 flex items-center justify-center gap-2">
-          <FaCalendarAlt /> Calendar
-        </h1>
-      </div> 
-
+      <h1 className="text-3xl font-bold text-blue-600 flex items-center gap-2 mb-4">
+        <FaCalendarAlt /> Calendar
+      </h1>
 
       {/* Introduction */}
       <section className="mb-6">
-        <h2 className="text-xl font-semibold text-gray-800 flex items-center gap-2">
-          <FaLightbulb className="text-yellow-500" /> Introduction
+        <h2 className="text-xl font-semibold text-gray-800 mb-2 flex items-center gap-2">
+          <FaLightbulb /> Introduction
         </h2>
-        <p className="mt-2 text-gray-700">
-          Calendar problems test your ability to calculate days, dates, weeks, and relationships among them. These questions are common in aptitude tests and can be solved quickly using patterns and formulas.
+        <p>
+          Calendar aptitude questions test your understanding of days, dates, leap years, odd days, and calendars.
+          These problems often require quick mental math and a grasp of basic rules to find the day of the week for
+          a given date or vice versa.
         </p>
       </section>
 
       {/* Key Concepts */}
       <section className="mb-6">
-        <h2 className="text-xl font-semibold text-gray-800 flex items-center gap-2">
-          <FaLightbulb className="text-green-500" /> Key Concepts
+        <h2 className="text-xl font-semibold text-gray-800 mb-2 flex items-center gap-2">
+          <FaBolt /> Key Concepts
         </h2>
-        <ul className="list-disc ml-6 mt-2 text-gray-700 space-y-2">
-          <li><strong>Odd Days:</strong> Number of days more than complete weeks. E.g., 10 days = 1 week + <strong>3 odd days</strong></li>
-          <li><strong>Leap Year:</strong> Divisible by 4, not by 100 unless divisible by 400. 366 days = <strong>2 odd days</strong></li>
-          <li><strong>Normal Year:</strong> 365 days = <strong>1 odd day</strong></li>
-          <li><strong>Day Codes:</strong> Sunday = 0, Monday = 1, ..., Saturday = 6</li>
-          <li><strong>Month Codes (Non-Leap):</strong> Jan: 0, Feb: 3, Mar: 3, Apr: 6, May: 1, Jun: 4, Jul: 6, Aug: 2, Sep: 5, Oct: 0, Nov: 3, Dec: 5</li>
+        <ul className="list-disc pl-6 space-y-1">
+          <li>Odd Days: Days more than complete weeks (7 days).</li>
+          <li>Leap Year: Occurs every 4 years, has 366 days (extra day in Feb).</li>
+          <li>Non-Leap Year: Has 365 days = 1 odd day.</li>
+          <li>Leap Year: 366 days = 2 odd days.</li>
+          <li>100 years = 5 odd days; 400 years = 0 odd days.</li>
+          <li>Reference base: 1st Jan 1900 was Monday.</li>
         </ul>
       </section>
 
       {/* Shortcuts */}
       <section className="mb-6">
-        <h2 className="text-xl font-semibold text-gray-800 flex items-center gap-2">
-          <FaBolt className="text-purple-500" /> Shortcuts
+        <h2 className="text-xl font-semibold text-gray-800 mb-2 flex items-center gap-2">
+          <FaRedo /> Shortcuts
         </h2>
-        <ul className="list-disc ml-6 mt-2 text-gray-700 space-y-2">
-          <li><strong>Leap Year Test:</strong> Divisible by 4 and not 100, or divisible by 400</li>
-          <li><strong>Finding Day of a Date:</strong> Break into parts and use odd days + modulo 7</li>
-          <li><strong>1 Jan Trick:</strong> Know base years like 1900 (Mon), 2000 (Sat) for reference</li>
+        <ul className="list-disc pl-6 space-y-1">
+          <li>Use divisibility of years to find total odd days quickly.</li>
+          <li>To find day of a date: Calculate total odd days till that date.</li>
+          <li>Know which years are leap years to adjust Feb's days.</li>
         </ul>
+      </section>
+
+      {/* Examples */}
+      <section className="mb-6">
+        <h2 className="text-xl font-semibold text-gray-800 mb-2 flex items-center gap-2">
+          📘 Examples
+        </h2>
+        <p className="mb-2 font-medium">Q: What day of the week was 15th August 1947?</p>
+        <p className="mb-2">
+          → Total years from 1900 to 1946 = 46 years  
+          → Number of leap years = 11  
+          → Total odd days = (46 + 11) = 57 = 1 odd day  
+          → From 1st Jan to 15th Aug = 227 days = 3 odd days  
+          → Total odd days = 1 + 3 = 4 → Thursday
+        </p>
       </section>
 
       {/* Code */}
       <section className="mb-6">
-        <h2 className="text-xl font-semibold text-gray-800 flex items-center gap-2">
-          <FaCode className="text-red-500" /> Code Example
+        <h2 className="text-xl font-semibold text-gray-800 mb-2 flex items-center gap-2">
+          <FaCode /> Code (Day of Week Finder)
         </h2>
-        <pre className="bg-gray-100 p-4 rounded text-sm overflow-x-auto">
-{`import datetime
+        <pre className="bg-gray-100 p-4 rounded-lg overflow-x-auto text-sm">
+{`function getDayOfWeek(dateStr) {
+  const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  const date = new Date(dateStr);
+  return days[date.getDay()];
+}
 
-def find_day(date_str):
-    day_name = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
-    day, month, year = map(int, date_str.split('/'))
-    date_obj = datetime.date(year, month, day)
-    return day_name[date_obj.weekday()]
-
-print(find_day("15/08/2025"))  # Output: Friday`}
+// Example
+console.log(getDayOfWeek("1947-08-15")); // "Friday"`}
         </pre>
       </section>
 
       {/* Recap */}
-      <section className="mb-6">
-        <h2 className="text-xl font-semibold text-gray-800 flex items-center gap-2">
-          <FaRedo className="text-teal-500" /> Recap
+      <section className="mb-8">
+        <h2 className="text-xl font-semibold text-gray-800 mb-2 flex items-center gap-2">
+          ✅ Recap
         </h2>
-        <ul className="list-disc ml-6 mt-2 text-gray-700 space-y-2">
-          <li>Use <strong>odd days</strong> to calculate weekdays</li>
-          <li>Understand <strong>leap years</strong> and month codes</li>
-          <li>Practice real questions for better speed and accuracy</li>
-          <li>Remember base dates like 01 Jan 1900 or 2000</li>
+        <ul className="list-disc pl-6 space-y-1">
+          <li>Odd days help us calculate weekdays.</li>
+          <li>Leap years = extra odd day (2 instead of 1).</li>
+          <li>Base reference: 1 Jan 1900 was a Monday.</li>
         </ul>
       </section>
 
-      {/* Back to Topics Button */}
-     
+      <Link
+        to="/learn"
+        className="fixed bottom-6 right-6 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-full shadow-lg transition-all"
+      >
+        🔙 Back to Topics
+      </Link>
     </div>
   );
 };
