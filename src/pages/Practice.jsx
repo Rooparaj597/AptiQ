@@ -1,40 +1,46 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-export default function Practice() {
-  const navigate = useNavigate();
-
-  const handleStart = (level) => {
-    navigate(`/practice/${level.toLowerCase()}`);
-  };
-
+const Practice = () => {
   return (
-    <div className="max-w-4xl mx-auto p-6 text-gray-800">
-      <h1 className="text-3xl font-bold text-blue-700 mb-4">🧠 Practice Zone</h1>
-      <p className="text-gray-700 mb-6">
-        Select a difficulty level to begin practicing aptitude questions. Each level comes with a timer and scoring system.
+    <div className="min-h-screen bg-gray-900 text-white px-6 py-10">
+      <h1 className="text-3xl font-bold mb-6 text-yellow-300">🧠 Practice Center</h1>
+
+      <p className="mb-4 text-lg">
+        Choose your level or try a topic-specific quiz to test your skills!
       </p>
 
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-        <button
-          onClick={() => handleStart("Easy")}
-          className="bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-all duration-200"
+      <div className="grid gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+        <Link
+          to="/practice/easy"
+          className="bg-green-600 hover:bg-green-500 p-5 rounded-2xl shadow-md text-center"
         >
-          🟢 Easy
-        </button>
-        <button
-          onClick={() => handleStart("Medium")}
-          className="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-all duration-200"
+          🔹 Easy
+        </Link>
+
+        <Link
+          to="/practice/medium"
+          className="bg-yellow-600 hover:bg-yellow-500 p-5 rounded-2xl shadow-md text-center"
         >
-          🟡 Medium
-        </button>
-        <button
-          onClick={() => handleStart("Hard")}
-          className="bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md transition-all duration-200"
+          🔸 Medium
+        </Link>
+
+        <Link
+          to="/practice/hard"
+          className="bg-red-600 hover:bg-red-500 p-5 rounded-2xl shadow-md text-center"
         >
-          🔴 Hard
-        </button>
+          🔺 Hard
+        </Link>
+
+        <Link
+          to="/practice/cuberoots"
+          className="bg-blue-700 hover:bg-blue-600 p-5 rounded-2xl shadow-md text-center col-span-full"
+        >
+          🧊 Cube Roots Quiz
+        </Link>
       </div>
     </div>
   );
-}
+};
+
+export default Practice;

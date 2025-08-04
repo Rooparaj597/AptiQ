@@ -1,11 +1,12 @@
 import { NavLink } from "react-router-dom";
 
 export default function Navbar() {
-  const navItems = [
-    { to: "/", label: "Home 🏠" },
-    { to: "/learn", label: "Learn 📘" },
-    { to: "/practice", label: "Practice 🧠" },
-  ];
+const navItems = [
+  { to: "/", label: "Home 🏠" },
+  { to: "/learn", label: "Learn 📘" },
+  { to: "/practice", label: "Practice 🧠" },
+];
+
 
   const navClass = ({ isActive }) =>
     isActive ? "text-yellow-300 font-semibold" : "text-white hover:text-yellow-300";

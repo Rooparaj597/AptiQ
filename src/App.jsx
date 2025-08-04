@@ -8,7 +8,7 @@ import ProfitLoss from "./pages/learn/ProfitLoss";
 import TimeWork from "./pages/learn/TimeWork";
 import TimeSpeedDistance from "./pages/learn/TimeSpeedDistance";
 import Calendar from "./pages/learn/Calendar";
-import Ratio from "./pages/learn/Ratio"; // ✅ Add this
+import Ratio from "./pages/learn/Ratio";
 import Clock from "./pages/learn/Clock";
 import Directions from "./pages/learn/Directions";
 import NumberSystem from "./pages/learn/NumberSystem";
@@ -17,7 +17,10 @@ import Easy from "./pages/Easy";
 import Medium from "./pages/Medium";
 import Hard from "./pages/Hard";
 import { StreakProvider } from "./Context/StreakContext";
+import CubeRootsQuiz from "./pages/practice/CubeRootsQuiz";
 import Navbar from "./components/Navbar";
+
+
 
 function App() {
   return (
@@ -29,6 +32,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/learn" element={<Learn />} />
           <Route path="/practice" element={<Practice />} />
+          <Route path="/practice/cuberoots" element={<CubeRootsQuiz />} />
+
 
           {/* Learn Topics */}
           <Route path="/learn/percentages" element={<Percentages />} />
