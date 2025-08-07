@@ -43,7 +43,7 @@ function App() {
           <Route path="/learn/calendar" element={<Calendar />} />
           <Route path="/learn/ratio" element={<Ratio />} />
           <Route path="/learn/directions" element={<Directions />} />
-          <Route path="/learn/number-system" element={<NumberSystem />} />
+          <Route path="/learn/number-systeam" element={<NumberSystem />} />
           <Route path="/learn/clock" element={<Clock />} />
           <Route path="/learn/cube-roots" element={<CubeRoots />} />
 
