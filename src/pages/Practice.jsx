@@ -38,6 +38,10 @@ const Practice = () => {
         >
           🧊 Cube Roots Quiz
         </Link>
+        <Link to="/learn/arrangements-of-words" className="topic-button">
+          Arrangements of Words
+        </Link>
+
       </div>
     </div>
   );

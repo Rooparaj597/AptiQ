@@ -19,6 +19,7 @@ import Hard from "./pages/Hard";
 import { StreakProvider } from "./Context/StreakContext";
 import CubeRootsQuiz from "./pages/practice/CubeRootsQuiz";
 import Navbar from "./components/Navbar";
+import ArrangementsOfWords from "./pages/learn/ArrangementsOfWords";
 
 
 
@@ -46,6 +47,8 @@ function App() {
           <Route path="/learn/number-systeam" element={<NumberSystem />} />
           <Route path="/learn/clock" element={<Clock />} />
           <Route path="/learn/cube-roots" element={<CubeRoots />} />
+          <Route path="/learn/arrangements-of-words" element={<ArrangementsOfWords />} />
+
 
 
 

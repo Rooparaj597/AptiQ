@@ -61,4 +61,10 @@ export const topics = [
     path: "/learn/cube-roots",
     ready: true,
   },
+  {
+    id: "arrangements-of-words",
+    title: "📝 Arrangements of Words",
+    path: "/learn/arrangements-of-words",
+    ready: true,
+  },
 ];
