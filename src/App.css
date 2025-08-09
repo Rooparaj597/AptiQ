@@ -93,3 +93,22 @@ body.dark {
 body {
   transition: background-color 0.3s, color 0.3s;
 }
+/* Center everything horizontally and vertically */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center; /* horizontal center */
+  align-items: center;    /* vertical center */
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9;
+}
+
+/* Optional: Limit the main container width */
+.main-container {
+  width: 100%;
+  max-width: 900px;
+  padding: 20px;
+  box-sizing: border-box;
+}

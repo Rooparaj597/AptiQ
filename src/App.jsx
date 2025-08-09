@@ -20,6 +20,10 @@ import { StreakProvider } from "./Context/StreakContext";
 import CubeRootsQuiz from "./pages/practice/CubeRootsQuiz";
 import Navbar from "./components/Navbar";
 import ArrangementsOfWords from "./pages/learn/ArrangementsOfWords";
+import About from './pages/About';
+
+
+
 
 
 
@@ -32,6 +36,7 @@ function App() {
           {/* Main Pages */}
           <Route path="/" element={<Home />} />
           <Route path="/learn" element={<Learn />} />
+          <Route path="/about" element={<About />} />
           <Route path="/practice" element={<Practice />} />
           <Route path="/practice/cuberoots" element={<CubeRootsQuiz />} />
 

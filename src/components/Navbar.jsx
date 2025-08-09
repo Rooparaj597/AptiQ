@@ -1,39 +1,28 @@
-import { NavLink } from "react-router-dom";
-import { useEffect, useState } from "react";
-import "../App.css";
+// src/components/Navbar.jsx
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import "./Navbar.css"; // We'll style it separately
 
-export default function Navbar() {
-  const navItems = [
-    { to: "/", label: "Home 🏠" },
-    { to: "/learn", label: "Learn 📘" },
-    { to: "/practice", label: "Practice 🧠" },
-  ];
-
-  const [darkMode, setDarkMode] = useState(() =>
-    localStorage.getItem("theme") === "dark"
-  );
+const Navbar = () => {
+  const [darkMode, setDarkMode] = useState(false);
 
   useEffect(() => {
-    document.body.className = darkMode ? "dark" : "light";
-    localStorage.setItem("theme", darkMode ? "dark" : "light");
+    document.body.className = darkMode ? "dark" : "";
   }, [darkMode]);
 
   return (
-    <nav className={`navbar ${darkMode ? "dark" : ""}`}>
-      <h1>AptiQ</h1>
-      <div className="nav-links">
-        {navItems.map((item) => (
-          <NavLink key={item.to} to={item.to}>
-            {item.label}
-          </NavLink>
-        ))}
-        <button
-          className={`toggle-btn ${darkMode ? "dark" : ""}`}
-          onClick={() => setDarkMode(!darkMode)}
-        >
-          {darkMode ? "☀️ Light" : "🌙 Dark"}
-        </button>
-      </div>
+    <nav className="navbar">
+      <div className="navbar-logo">📚 AptiQ</div>
+      <ul className="navbar-links">
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/learn">Learn</Link></li>
+        <li><Link to="/about">About</Link></li>
+      </ul>
+      <button className="theme-toggle" onClick={() => setDarkMode(!darkMode)}>
+        {darkMode ? "☀ Light" : "🌙 Dark"}
+      </button>
     </nav>
   );
-}
+};
+
+export default Navbar;
