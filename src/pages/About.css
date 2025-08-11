@@ -1,0 +1,67 @@
+.about-page {
+  display: flex;
+  justify-content: center;
+  padding: 40px 20px;
+  background-color: #f8f8f8;
+}
+
+.about-container {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 900px;
+  width: 100%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.about-container h1 {
+  color: #4CAF50;
+  margin-bottom: 10px;
+}
+
+.intro {
+  font-size: 1.2em;
+  margin-bottom: 30px;
+}
+
+.about-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.card {
+  background: #fdfdfd;
+  border: 1px solid #ddd;
+  padding: 20px;
+  flex: 1 1 250px;
+  max-width: 280px;
+  border-radius: 10px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.fun-fact {
+  margin-top: 30px;
+}
+
+.fun-fact button {
+  background: #4CAF50;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.fun-fact button:hover {
+  background: #45a049;
+}
